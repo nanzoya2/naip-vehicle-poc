@@ -1,0 +1,14 @@
+sites:
+  - site_id: NISSAN_SMYRNA
+    site_name: Nissan Smyrna Vehicle Assembly Plant
+    roi_version: v1
+    roi: roi/nissan_smyrna_v1.geojson   # 完成車ヤード4区画（Z1〜Z4）。Phase 0の暫定版
+    buffer_m: 50
+    # 0.6m GSDが存在する年のみ（2012〜2016は1.0mのため対象外）
+    target_years: [2018, 2021, 2023]
+
+# ROI v1 で除外している領域
+#   - 鉄道積込エリア（ヤード西側。車運車は屋根付きで車両視認不可）
+#   - 西側の駐車場群（色がばらばら → 従業員駐車場と判断）
+#   - 鉄道エリア北端の小ヤード（完成車かどうか未確認。要確認）
+#   - 試験走行路（オーバル）
