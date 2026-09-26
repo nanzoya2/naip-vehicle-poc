@@ -1,0 +1,17 @@
+# 車両台数推定（Job #2）の推論設定。この内容とROI定義から config_hash を算出する（§21）
+estimation_method: area_ratio
+
+tiling:
+  core_px: 480        # Core領域（集計対象）。area_ratio.bg_block_px の倍数にすること
+  overlap_px: 80      # Coreの外側に付ける文脈領域。bg_block_px の倍数にすること
+
+patch_m: 50           # パッチ集計の単位（vehicle_density_patch, §16.3）
+
+area_ratio:
+  ndvi_veg: 0.25            # これを超える画素は植生として除外
+  bg_block_px: 80           # 背景推定ブロック（48m）
+  edge_erode_px: 6          # ROI縁から内側へ除外する幅（約3.6m）
+  dark_surface_ratio: 0.85  # 区画の背景輝度 < 同年の最も明るい区画 × これ → 暗い舗装
+  dev_thr: 25               # 背景色からの乖離（RGB各バンドの最大差, DN）がこれを超えたら占有
+  single_area_px: [10, 60]  # 単独車両とみなす連結成分の面積範囲（車体 約22px＋影）
+  single_min_n: 30          # 単独車両がこれ未満の舗装種別は、同年の全体値で代用

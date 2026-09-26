@@ -1,0 +1,27 @@
+[project]
+name = "naip-detector"
+version = "0.1.0"
+description = "NAIP 車両台数推定（Cloud Run Job #2）"
+requires-python = ">=3.11"
+dependencies = [
+    "rasterio>=1.4",
+    "geopandas>=1.0",
+    "pyogrio>=0.10",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "pillow>=10",
+    "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
+filterwarnings = [
+    # rasterio 内部の Affine `*` 演算子の非推奨警告
+    "ignore:Use `@` matmul instead:PendingDeprecationWarning:rasterio",
+]

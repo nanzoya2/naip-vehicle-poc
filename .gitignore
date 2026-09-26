@@ -4,3 +4,5 @@ outputs/
 __pycache__/
 terraform/terraform.tfvars
 terraform/.terraform/
+*.egg-info/
+.pytest_cache/
